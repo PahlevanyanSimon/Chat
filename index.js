@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.use(express.json())
+//app.use(express.json())
 
 io.on('connection', (socket) => {
     console.log('User connected')
