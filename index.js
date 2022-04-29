@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-//app.use(express.json())
+const port = process.env.PORT || 5000
 
 io.on('connection', (socket) => {
     console.log('User connected')
@@ -17,11 +17,11 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('chat message', ({msg, name}) => {
-        io.emit('chat message', {msg, name});
+    socket.on('chat message', ({ msg, name }) => {
+        io.emit('chat message', { msg, name });
     });
 });
 
-server.listen(5000, () => {
+server.listen(process.env.PORT, () => {
     console.log('listening on *:3000');
 });
